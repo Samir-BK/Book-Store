@@ -25,7 +25,7 @@
 
             <label for="deplist">Category</label>
 			 <select id="categoryid" th:field="*{category}" class="form-control">
-       			<option th:each="category: ${category}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+       			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
     		</select> 
             <input type="submit" value="Save">
         </form>

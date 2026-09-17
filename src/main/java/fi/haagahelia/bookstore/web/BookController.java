@@ -33,6 +33,7 @@ public class BookController {
     @GetMapping("/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 
@@ -53,12 +54,4 @@ public class BookController {
         model.addAttribute("book", bookRepository.findById(bookId).orElse(null));
         return "editbook";
     }
-
-    @GetMapping("/add")
-    public String addStudent(Model model){
-    	model.addAttribute("book", new Book());
-    	model.addAttribute("departments", categoryRepository.findAll());
-        return "addstudent";
-    }  
-
 }
