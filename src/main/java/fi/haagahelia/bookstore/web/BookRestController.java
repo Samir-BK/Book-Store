@@ -2,12 +2,18 @@ package fi.haagahelia.bookstore.web;
 
 import java.util.Optional;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fi.haagahelia.bookstore.domain.Book;
 import fi.haagahelia.bookstore.domain.BookRepository;
+
+
 
 @RestController
 public class BookRestController {
@@ -25,6 +31,26 @@ public class BookRestController {
     public Optional<Book> findById(@PathVariable("id") Long studentId) {
         return bookRepository.findById(studentId);
     }
-    
+
+    // Add new book
+    @PostMapping("/books")
+    public  Book saveBook(@RequestBody Book book) {
+        return bookRepository.save(book);
+    }
+
+    // Modifying book
+    @PutMapping("/books/{id}")
+    public Book saveEditedBook(@RequestBody Book editedBook, @PathVariable Long id) {
+        //TODO: process PUT request
+        
+        editedBook.setId(id);
+        return bookRepository.save(editedBook);
+    }
+
+    @DeleteMapping("/books/{id}")
+    public Iterable<Book> deleteBook(@PathVariable Long id){
+        bookRepository.deleteById(id);
+        return bookRepository.findAll();
+    }
     
 }
