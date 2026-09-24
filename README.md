@@ -1,39 +1,37 @@
-# Bookstore
+# Book Store
 
-This is a training project for the Server Programming course at Haaga-Helia University of Applied Sciences.
+A Spring Boot bookstore application with REST API support, built for the Haaga-Helia Back End Programming course.
 
-The project will be developed further during the course.
+## Tech Stack
 
-## Technologies
-
-- Java
+- Java 17
 - Spring Boot
-- Spring Web
+- Spring Data JPA
+- Spring Data REST
 - Thymeleaf
-- Maven
+- H2 (in-memory database)
 
-## Current functionality
+## Features
 
-At this stage, the project includes:
+- Web pages (Thymeleaf) to list, add, edit, and delete books
+- REST API (JSON) for books:
+  - `GET /books` — list all books
+  - `GET /books/{id}` — get one book by id
+  - `POST /books` — create a new book
+  - `PUT /books/{id}` — update a book
+  - `DELETE /books/{id}` — delete a book
+- Spring Data REST auto-generated API at `/api/books`, `/api/categories`
 
-- A Spring Boot application
-- `BookController`
-- `Book` model class
-- `/index` GET request
-- A simple Thymeleaf index page
+## Running the app
 
-## Project structure
+```bash
+./mvnw spring-boot:run
+```
 
-```text
-src
-└── main
-    ├── java
-    │   └── fi.haagahelia.bookstore
-    │       ├── domain
-    │       │   └── Book.java
-    │       └── web
-    │           └── BookController.java
-    │
-    └── resources
-        └── templates
-            └── index.html
+App runs at `http://localhost:8080`
+
+H2 console: `http://localhost:8080/h2-console`
+
+## Author
+
+Samir B K
