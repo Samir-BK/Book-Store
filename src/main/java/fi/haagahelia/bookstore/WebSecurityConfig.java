@@ -17,17 +17,14 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(auth -> auth
-                .anyRequest().authenticated()
-            )
-            .formLogin(form -> form
-            .loginPage("/login")
-            .permitAll()
-            )
-            .logout(logout -> logout
-            .permitAll()
-        );
-
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/delete/**").hasRole("ADMIN")
+                        .anyRequest().authenticated())
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .permitAll())
+                .logout(logout -> logout
+                        .permitAll());
 
         return http.build();
     }
