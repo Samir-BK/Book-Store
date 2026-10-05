@@ -20,10 +20,11 @@ public class BookController {
         this.categoryRepository = categoryRepository;
     }
 
-    @GetMapping("/index")   
+    @GetMapping("/index")
     public String index() {
         return "index";
     }
+
     @GetMapping("/booklist")
     public String booklist(Model model) {
         model.addAttribute("books", bookRepository.findAll());
@@ -53,5 +54,10 @@ public class BookController {
     public String editBook(@PathVariable("id") Long bookId, Model model) {
         model.addAttribute("book", bookRepository.findById(bookId).orElse(null));
         return "editbook";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 }
