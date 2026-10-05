@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Books</h1>
+    <p>Logged in as: <span th:text="${username}"></span></p>
     <table class="table table-striped">
         <tr>
             <th>Author</th>
@@ -25,9 +26,9 @@
             </td>
         </tr>
     </table>
-    <form th:action="@{/logout}" method="post">
+    <a href="/add" class="btn btn-success">Add Book</a>
+        <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
 </form>
-    <a href="/add" class="btn btn-success">Add Book</a>
 </body>
 </html>

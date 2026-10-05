@@ -1,5 +1,7 @@
 package fi.haagahelia.bookstore.web;
 
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,11 +27,12 @@ public class BookController {
         return "index";
     }
 
-    @GetMapping("/booklist")
-    public String booklist(Model model) {
-        model.addAttribute("books", bookRepository.findAll());
-        return "booklist";
-    }
+@GetMapping("/booklist")
+public String booklist(Model model, Principal principal) {
+    model.addAttribute("books", bookRepository.findAll());
+    model.addAttribute("username", principal.getName());
+    return "booklist";
+}
 
     @GetMapping("/add")
     public String addBook(Model model) {
