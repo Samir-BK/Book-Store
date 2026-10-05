@@ -10,7 +10,7 @@ A Spring Boot bookstore application with REST API support, built for the Haaga-H
 - Spring Data REST
 - Thymeleaf
 - H2 (in-memory database)
-
+x
 ## Features
 
 - Web pages (Thymeleaf) to list, add, edit, and delete books
