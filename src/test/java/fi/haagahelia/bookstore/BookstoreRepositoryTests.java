@@ -3,6 +3,7 @@ package fi.haagahelia.bookstore;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,4 +60,18 @@ public class BookstoreRepositoryTests {
         assertThat(books).hasSize(1);
         assertThat(books.get(0).getAuthor()).isEqualTo("Author");
     }
+
+    /*
+    * Test Case to verify that a book can be deleted
+    */
+   @Test
+   public void deleteBook() {
+    Category category = categoryRepository.save(new Category("Drama"));
+    Book book = bookRepository.save(new Book("ToDelete", "Author", 2020, "78797", 10, category));
+
+    bookRepository.delete(book);
+
+    Optional<Book> deletedBook = bookRepository.findById(book.getId());
+    assertThat(deletedBook).isEmpty();
+   }
 }
