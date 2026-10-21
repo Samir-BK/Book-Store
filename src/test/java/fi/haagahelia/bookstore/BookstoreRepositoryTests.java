@@ -13,6 +13,7 @@ import fi.haagahelia.bookstore.domain.Book;
 import fi.haagahelia.bookstore.domain.BookRepository;
 import fi.haagahelia.bookstore.domain.Category;
 import fi.haagahelia.bookstore.domain.CategoryRepository;
+import fi.haagahelia.bookstore.domain.User;
 import fi.haagahelia.bookstore.domain.UserRepository;
 
 @DataJpaTest
@@ -75,6 +76,8 @@ public class BookstoreRepositoryTests {
     assertThat(deletedBook).isEmpty();
    }
 
+   // CategoryRepository
+
    /*
     Test case to verify category creategory creation and ID auto-generation
    */
@@ -119,4 +122,19 @@ public class BookstoreRepositoryTests {
         assertThat(deletedCategory).isEmpty();
 
     }
-}
+
+    // User Repository
+
+    /**
+     *  Verify the user account creation
+     */
+
+    @Test
+    public void CreateNewUser() {
+        User user = new User("testuser", "$2a$10$testpasswordhash", "test@test.com", "USER");
+        userRepository.save(user);
+
+        assertThat(user.getId()).isNotNull();
+    }
+
+}   
