@@ -150,7 +150,21 @@ public class BookstoreRepositoryTests {
 
         assertThat(foundUser).isNotNull();
         assertThat(foundUser.getUsername()).isEqualTo("Samir");
-
-
     }
+
+    /**
+     * Test Case to verify user removal
+     */
+
+    @Test
+    public void deleteUser() {
+        User user = new User("Samir", "$2a$10$testpasswordhash", "samir@test.com", "USER");
+        userRepository.save(user);
+        Long userId = user.getId();
+
+        userRepository.delete(user);
+
+        Optional<User> deletedUser = userRepository.findById(userId);
+        assertThat(deletedUser).isEmpty();
+        }
 }   
