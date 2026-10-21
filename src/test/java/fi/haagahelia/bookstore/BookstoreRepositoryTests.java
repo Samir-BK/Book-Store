@@ -101,7 +101,22 @@ public class BookstoreRepositoryTests {
 
         assertThat(categories).hasSize(1);
         assertThat(categories.get(0).getName()).isEqualTo("History");
-
     }
 
+    /*
+        Test case to varify category deletion
+    */
+
+    @Test
+    public void deleteCategory() {
+        Category category = categoryRepository.save(new Category("History"));
+        Long catId = category.getCategoryid();
+
+        categoryRepository.delete(category);
+
+
+        Optional<Category> deletedCategory = categoryRepository.findById(catId);
+        assertThat(deletedCategory).isEmpty();
+
+    }
 }
