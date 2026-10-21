@@ -74,4 +74,16 @@ public class BookstoreRepositoryTests {
     Optional<Book> deletedBook = bookRepository.findById(book.getId());
     assertThat(deletedBook).isEmpty();
    }
+
+   /*
+    Test case to verify category creategory creation and ID auto-generation
+   */
+
+    @Test
+    public void cretateNewCategoryTest() {
+        Category category = categoryRepository.save(new Category("Sc-fi"));
+
+
+        assertThat(category.getCategoryid()).isNotNull();
+    }
 }
