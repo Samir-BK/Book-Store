@@ -86,4 +86,22 @@ public class BookstoreRepositoryTests {
 
         assertThat(category.getCategoryid()).isNotNull();
     }
+
+    /*
+        Verify search functionality by cateogory
+    */
+
+    
+    @Test
+    public void findByNameShouldReturnCategory() {
+        Category category = categoryRepository.save(new Category("History"));
+
+        
+        List<Category> categories = categoryRepository.findByName("History");
+
+        assertThat(categories).hasSize(1);
+        assertThat(categories.get(0).getName()).isEqualTo("History");
+
+    }
+
 }
