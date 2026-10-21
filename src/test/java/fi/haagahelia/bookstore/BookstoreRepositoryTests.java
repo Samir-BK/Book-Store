@@ -137,4 +137,20 @@ public class BookstoreRepositoryTests {
         assertThat(user.getId()).isNotNull();
     }
 
+    /**
+     * Test case to verify user lookup by unique username
+     */
+
+    @Test
+    public void findByUseNameShouldReturnUser() {
+        User user = new User("Samir", "$2a$10$testpasswordhash", "samir@test.com", "USER");
+        userRepository.save(user);
+
+        User foundUser = userRepository.findByUsername("Samir");
+
+        assertThat(foundUser).isNotNull();
+        assertThat(foundUser.getUsername()).isEqualTo("Samir");
+
+
+    }
 }   
