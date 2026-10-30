@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import fi.haagahelia.bookstore.domain.Book;
@@ -21,6 +22,7 @@ public class BookstoreApplication {
 	}
 
 	@Bean
+	@Profile("dev")
 	public CommandLineRunner demo(BookRepository repository, CategoryRepository CategoryRepository,
 			UserRepository userRepository) {
 		return (args) -> {
