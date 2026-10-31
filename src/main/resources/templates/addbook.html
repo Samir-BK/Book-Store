@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Add Book</title>
 </head>
+
 <body>
     <h1>Add book</h1>
     <div>
@@ -23,12 +25,21 @@
             <label for="price">Price</label>
             <input type="text" id="price" th:field="*{price}" /><br>
 
-            <label for="deplist">Category</label>
-			 <select id="categoryid" th:field="*{category}" class="form-control">
-       			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
-    		</select> 
+
+            <label for="categoryid">Category</label>
+
+            <select id="categoryid" th:field="*{category}" class="form-control">
+                <option th:each="category : ${categories}" th:value="${category.categoryid}" th:text="${category.name}">
+                </option>
+            </select>
+
+            <a th:href="@{/categories/add}">Add New Category</a>
+            <br>
+
             <input type="submit" value="Save">
+
         </form>
     </div>
 </body>
+
 </html>
